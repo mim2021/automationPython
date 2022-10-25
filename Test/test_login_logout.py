@@ -6,10 +6,11 @@ from Pages.loginpage import Login
 from Pages.logoutpage import Logout
 import random
 
+"""pytest, pom and unittest"""
 @pytest.mark.usefixtures("test_setup")
 class TestLoginLogout(unittest.TestCase):
-    @pytest.mark.one1
-    def test_valid_login(self):
+    @pytest.mark.run('first')
+    def test_one_valid_login(self):
         driver = self.driver
         login = Login(driver)
         login.click_profile_icon()
@@ -30,8 +31,8 @@ class TestLoginLogout(unittest.TestCase):
         self.assertEqual(actual_title, expected_title, message)
         time.sleep(4)
 
-    @pytest.mark.two2
-    def test_invalid_login(self):
+    @pytest.mark.run('second')
+    def test_two_invalid_login(self):
         driver = self.driver
         login = Login(driver)
         login.click_profile_icon()

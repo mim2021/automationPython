@@ -7,20 +7,22 @@ from Pages.logoutpage import Logout
 import random
 
 """pytest, pom and unittest"""
+
+
 @pytest.mark.usefixtures("test_setup")
 class TestLoginLogout(unittest.TestCase):
-    @pytest.mark.run('first')
+    # @pytest.mark.run('first')
     def test_one_valid_login(self):
         driver = self.driver
         login = Login(driver)
-        login.click_profile_icon()
+        login.click_profile_icon_login()
         login.click_login()
-        login.enter_email("mim@sharetrip.net")
-        login.enter_password("vugijugi")
+        login.enter_email_login("mim@sharetrip.net")
+        login.enter_password_login("vugijugi")
         login.click_login_button()
 
         logout = Login(driver)
-        logout.click_profile_icon()
+        logout.click_profile_icon_login()
 
         logout = Logout(driver)
         time.sleep(4)
@@ -31,21 +33,18 @@ class TestLoginLogout(unittest.TestCase):
         self.assertEqual(actual_title, expected_title, message)
         time.sleep(4)
 
-    @pytest.mark.run('second')
+    # @pytest.mark.run('second')
+    """invalid random email id and password"""
     def test_two_invalid_login(self):
         driver = self.driver
         login = Login(driver)
-        login.click_profile_icon()
+        login.click_profile_icon_login()
         login.click_login()
-        login.enter_email(string.ascii_lowercase + "@gmail.com")
-        login.enter_password(string.ascii_letters+string.digits+string.punctuation)
+        login.enter_email_login(''.join(random.choices(string.ascii_lowercase, k=9))+"@gmail.com")
+        login.enter_password_login(random.choices(string.ascii_letters+string.digits+string.punctuation, k=8))
+        login.click_eye_icon_login()
+        time.sleep(2)
         login.click_login_button()
+        time.sleep(2)
 
-        logout = Login(driver)
-        logout.click_profile_icon()
 
-        logout = Logout(driver)
-        time.sleep(4)
-        logout.click_logout()
-
-        time.sleep(4)

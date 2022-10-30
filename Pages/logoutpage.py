@@ -10,4 +10,3 @@ class Logout:
 
     def click_logout(self):
         self.driver.find_element(By.XPATH, self.logout_text).click()
-

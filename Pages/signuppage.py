@@ -1,5 +1,4 @@
 import pytest
-from selenium.webdriver import ActionChains, Keys
 from selenium.webdriver.common.by import By
 
 

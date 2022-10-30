@@ -12,7 +12,7 @@ import random
 @pytest.mark.usefixtures("test_setup")
 class TestLoginLogout(unittest.TestCase):
     # @pytest.mark.run('first')
-    def test_one_valid_login(self):
+    def test1_valid_login(self):
         driver = self.driver
         login = Login(driver)
         login.click_profile_icon_login()
@@ -35,7 +35,7 @@ class TestLoginLogout(unittest.TestCase):
 
     # @pytest.mark.run('second')
     """invalid random email id and password"""
-    def test_two_invalid_login(self):
+    def test2_invalid_login(self):
         driver = self.driver
         login = Login(driver)
         login.click_profile_icon_login()
@@ -47,4 +47,18 @@ class TestLoginLogout(unittest.TestCase):
         login.click_login_button()
         time.sleep(2)
 
+    """invalid random password"""
+
+    def test3_invalid_login(self):
+        driver = self.driver
+        driver.get("https://sharetrip.net/")
+        login = Login(driver)
+        login.click_profile_icon_login()
+        login.click_login()
+        login.enter_email_login("mim@sharetrip.net")
+        login.enter_password_login(random.choices(string.ascii_letters + string.digits + string.punctuation, k=8))
+        login.click_eye_icon_login()
+        time.sleep(2)
+        login.click_login_button()
+        time.sleep(2)
 

@@ -15,17 +15,14 @@ class TestSignUp(unittest.TestCase):
         signup.click_profile_icon_signup()
         signup.click_create_account_text()
 
-        # signup.enter_email_signup(''.join(random.choices(string.ascii_lowercase + string.digits, k=10)) + "@gmail.com")
-        # input_password = ''.join(random.choices(string.ascii_letters + string.digits, k=10))
         def get_random_string(length=1):
             letters = string.ascii_letters
             random_string = ''.join(random.choice(letters) for _ in range(length))
             return random_string
         email = f"{get_random_string(10)}@gmail.com"
-        input_password = f"{get_random_string(15)}{random.randrange(100000)}"
+        input_password = f"{get_random_string(15)}{random.randrange(10000)}"
         print(email)
         print(input_password)
-
         signup.enter_email_signup(email)
         signup.enter_password_signup(input_password)
         driver.execute_script("window.scrollTo(0, 200)")

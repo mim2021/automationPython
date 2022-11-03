@@ -28,7 +28,7 @@ class TestLoginLogout(unittest.TestCase):
         time.sleep(4)
         logout.click_logout()
         actual_title = driver.title
-        expected_title = "ShareTrip™️:Best Travel Agency in Bangladesh - Flights & Hotels"
+        expected_title = "ShareTrip™️: Online Travel Agency in Bangladesh - Hotels & Flights"
         message = "title is same"
         self.assertEqual(actual_title, expected_title, message)
         time.sleep(4)

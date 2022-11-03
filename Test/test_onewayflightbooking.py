@@ -1,3 +1,5 @@
+import random
+import string
 import time
 import unittest
 import pytest
@@ -13,21 +15,51 @@ class TestOneWayFlightBooking(unittest.TestCase):
         login_oneway_flight_booking = Login(driver)
         login_oneway_flight_booking.click_profile_icon_login()
         login_oneway_flight_booking.click_login()
-        login_oneway_flight_booking.enter_email_login("mim@sharetrip.net")
-        login_oneway_flight_booking.enter_password_login("vugijugi")
+        login_oneway_flight_booking.enter_email_login("csemim18@gmail.com")
+        login_oneway_flight_booking.enter_password_login("Vugijugi7")
         login_oneway_flight_booking.click_login_button()
         time.sleep(2)
 
         oneway_flight = OneWayFlight(driver)
         oneway_flight.click_oneway_tab()
         oneway_flight.input_flying_from_oneway("bkk")
-        time.sleep(4)
         oneway_flight.input_flying_to_oneway("kua")
-        time.sleep(4)
         oneway_flight.click_select_date_oneway()
-        time.sleep(4)
         oneway_flight.click_arrow()
-        time.sleep(4)
         oneway_flight.click_date()
-        print("done successfully")
+        oneway_flight.click_economy()
+        oneway_flight.click_search_button()
+        oneway_flight.click_book_button()
+        oneway_flight.switch_window()
+        print(driver.title)
+        oneway_flight.click_title()
+        oneway_flight.input_given_name(''.join(random.choices(string.ascii_letters, k=10)))
+        oneway_flight.input_sur_name(''.join(random.choices(string.ascii_letters, k=8)))
+        time.sleep(2)
+        oneway_flight.click_radio_button()
+        time.sleep(2)
+
+        driver.execute_script("window.scrollTo(0, 600)")
+        oneway_flight.input_phone_number("51832362092")
+        oneway_flight.select_DOB()
+        postcode = f"{random.randrange(10000)}"
+        # postcode = random.randrange(1000,9999) """another way to generate dynamic postcode"""
+        oneway_flight.input_postcode(postcode)
+
+        def get_random_passport_number(length=1):
+            letters = string.ascii_uppercase
+            random_string = ''.join(random.choice(letters) for _ in range(length))
+            return random_string
+        random_passport_number = f"{get_random_passport_number(2)}{random.randrange(1000000)}"
+        oneway_flight.input_passport_number(random_passport_number)
+        oneway_flight.give_passport_expiry_date()
+        oneway_flight.select_bank()
+        driver.execute_script("window.scrollTo(0, 600)")
+        oneway_flight.click_quick_pick_checkbox()
+        driver.execute_script("window.scrollTo(0, 800)")
+        oneway_flight.click_tc_checkbox()
+        oneway_flight.click_paynow_button()
         time.sleep(4)
+        print("done successfully")
+
+

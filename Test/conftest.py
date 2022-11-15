@@ -14,5 +14,5 @@ def test_setup(request):
     driver.implicitly_wait(10)
     yield
     # driver.close()
-    driver.quit()
+    # driver.quit()
     print("Successfully tested")

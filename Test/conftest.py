@@ -13,6 +13,6 @@ def test_setup(request):
     driver.get("https://sharetrip.net/")
     driver.implicitly_wait(10)
     yield
-    # driver.close()
+    driver.close()
     # driver.quit()
     print("Successfully tested")

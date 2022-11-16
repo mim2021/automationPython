@@ -27,7 +27,7 @@ class OneWayFlight:
         self.radioButtonCouponCode = "//span[normalize-space()='I want to use Coupon Code']"
         self.couponBox = "//input[@placeholder='Enter Coupon Code']"
         self.phoneNumberField = "//input[@name='mobileNumber']"
-        self.DOB = "//*[@id='__next']/div/section/div/div/div[1]/div[2]/div/div/form/section/div[1]/div[4]/div[3]/div/div/div/div[1]/div/div/div/input"
+        self.dOB = "//*[@id='__next']/div/section/div/div/div[1]/div[2]/div/div/form/section/div[1]/div[4]/div[3]/div/div/div/div[1]/div/div/div/input"
         self.monthDOB = "//select[@class='react-datepicker__month-select']"
         self.yearDOB = "//select[@class='react-datepicker__year-select']"
         self.dayDOB = "//div[@aria-label='Choose Friday, January 18th, 1980']"

@@ -15,8 +15,8 @@ class OneWayFlight:
         self.flyingToOneWay = "//div[@class='icon-input-block search-group circle-left']//div[@class='text-field']//div//input[@id='autocompleteundefined']"
         self.economyClass = "//button[normalize-space()='Economy Class']"
         self.searchButton = "//button[normalize-space()='Search Flights']"
-        self.bookButton = "//button[normalize-space()='Search Flights']"
-        self.title = "//*[@id='mui-component-select-titleName']"
+        self.bookButton = "//div[@class='row']//div[1]//div[1]//div[2]//div[3]//a[1]//button[1]"
+        self.title = "//input[@name='titleName']"
         self.msTitle = "//li[normalize-space()='Ms']"
         self.givenNameField = "givenName"
         self.surNameField = "//input[@name='surName']"
@@ -68,12 +68,10 @@ class OneWayFlight:
 
     def click_search_button(self):
         source = self.driver.find_element(By.XPATH, self.searchButton)
-        # act = ActionChains(driver)
-        # act.double_click(source).perform()
         self.driver.execute_script("arguments[0].click();", source)
 
-    # def click_cross_button(self):
-    #     self.driver.find_element(By.XPATH, self.crossButton).click()
+    def click_cross_button(self):
+        self.driver.find_element(By.XPATH, self.crossButton).click()
 
     def click_book_button(self):
         self.driver.implicitly_wait(10)
@@ -82,15 +80,28 @@ class OneWayFlight:
 
     def switch_window(self):
         driver = self.driver
+        p = driver.current_window_handle
+        chwd = driver.window_handles
         print(driver.current_window_handle)
-        WebDriverWait(driver, 5).until(EC.number_of_windows_to_be(2))
-        current_window = driver.window_handles[1]
-        driver.switch_to.window(current_window)
+        chwd = driver.window_handles
+        for w in chwd:
+            # switch focus to child window
+            if (w != p):
+                driver.switch_to.window(w)
+            break
         print(driver.window_handles)
 
+
+        """another way"""
+        # current_window = driver.window_handles[1]
+        # driver.switch_to.window(driver.window_handles[1])
+
     def click_title(self):
-        self.driver.find_element(By.XPATH, self.title).click()
+        title_field = self.driver.find_element(By.XPATH, self.title)
+        self.driver.execute_script("arguments[0].click();", title_field)
         self.driver.find_element(By.XPATH, self.msTitle).click()
+        # select_ms = self.driver.find_element(By.XPATH, self.msTitle)
+        # self.driver.execute_script("arguments[0].click();", select_ms)
 
     def input_given_name(self, given_name):
         self.driver.find_element(By.NAME, self.givenNameField).click()
@@ -111,8 +122,8 @@ class OneWayFlight:
         ele1 = self.driver.find_element(By.XPATH, self.slider)
         actions.drag_and_drop_by_offset(ele1, 20, 0).perform()
 
-    def enter_coupon(self, coupon_code):
-        self.driver.find_element(By.XPATH, self.radioButtonCouponCode).click()
+    # def enter_coupon(self, coupon_code):
+    #     self.driver.find_element(By.XPATH, self.radioButtonCouponCode).click()
 
     def input_phone_number(self, mobile_number):
         actions = ActionChains(self.driver)

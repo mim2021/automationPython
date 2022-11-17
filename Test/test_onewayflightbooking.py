@@ -43,7 +43,7 @@ class TestOneWayFlightBooking(unittest.TestCase):
         oneway_flight.click_title()
         oneway_flight.input_given_name(''.join(random.choices(string.ascii_letters, k=10)))
         oneway_flight.input_sur_name(''.join(random.choices(string.ascii_letters, k=8)))
-        time.sleep(2)
+        time.sleep(4)
         # oneway_flight.click_radio_button_earn_tc()
         oneway_flight.click_radio_button_redeem_tc()
         time.sleep(4)
@@ -69,7 +69,7 @@ class TestOneWayFlightBooking(unittest.TestCase):
         oneway_flight.click_tc_checkbox()
         # oneway_flight.click_paynow_button()
         time.sleep(4)
-        print("done successfully")
+        # print("done successfully")
 
 
 

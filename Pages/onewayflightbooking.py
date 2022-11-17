@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import random
+
 
 
 class OneWayFlight:
@@ -114,6 +114,7 @@ class OneWayFlight:
         self.driver.find_element(By.XPATH, self.radioButtonRedeemTc).click()
         actions = ActionChains(self.driver)
         ele1 = self.driver.find_element(By.XPATH, self.slider)
+        self.driver.execute_script("arguments[0].click();", ele1)
         # actions.drag_and_drop_by_offset(ele1, 20, 0).perform()
         actions.click_and_hold(ele1).move_by_offset(20, 0).perform()
 
@@ -127,7 +128,7 @@ class OneWayFlight:
         ele.send_keys(mobile_number)
 
     def select_DOB(self):
-        self.driver.find_element(By.XPATH, self.DOB).click()
+        self.driver.find_element(By.XPATH, self.dOB).click()
         sel1 = Select(self.driver.find_element(By.XPATH, self.monthDOB))
         sel1.select_by_visible_text("January")
         sel2 = Select(self.driver.find_element(By.XPATH, self.yearDOB))

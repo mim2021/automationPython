@@ -16,14 +16,14 @@ class OneWayFlight:
         self.economyClass = "//button[normalize-space()='Economy Class']"
         self.searchButton = "//button[normalize-space()='Search Flights']"
         self.bookButton = "//div[@class='row']//div[1]//div[1]//div[2]//div[3]//a[1]//button[1]"
-        self.title = "//input[@name='titleName']"
+        self.title = ":re:"
         self.msTitle = "//li[normalize-space()='Ms']"
         self.givenNameField = "givenName"
         self.surNameField = "//input[@name='surName']"
         self.crossButton = "//span[@class='cc-57dy cc-c2rb']"
         self.radioButtonEarnTc = "//span[normalize-space()='I want to Earn Trip Coin']"
-        self.radioButtonRedeemTc = "//span[normalize-space()='I want to Redeem TripCoins']"
-        self.slider = "//span[@class='MuiSlider-root MuiSlider-colorPrimary']"
+        self.radioButtonRedeemTc = "(//span[normalize-space()='I want to Redeem TripCoins'])[1]"
+        self.slider = "//span[@class='MuiSlider-thumb MuiSlider-thumbColorPrimary MuiSlider-thumbSizeMedium mui-style-1iua5vb']"
         self.radioButtonCouponCode = "//span[normalize-space()='I want to use Coupon Code']"
         self.couponBox = "//input[@placeholder='Enter Coupon Code']"
         self.phoneNumberField = "//input[@name='mobileNumber']"
@@ -74,7 +74,6 @@ class OneWayFlight:
         self.driver.find_element(By.XPATH, self.crossButton).click()
 
     def click_book_button(self):
-        self.driver.implicitly_wait(10)
         book_button = self.driver.find_element(By.XPATH, self.bookButton)
         self.driver.execute_script("arguments[0].click();", book_button)
 
@@ -95,12 +94,8 @@ class OneWayFlight:
         # driver.switch_to.window(driver.window_handles[1])
 
     def click_title(self):
-        # title_field = self.driver.find_element(By.XPATH, self.title)
-        # self.driver.execute_script("arguments[0].click();", title_field)
-        self.driver.find_element(By.XPATH, self.title).click()
+        self.driver.find_element(By.ID, self.title).click()
         self.driver.find_element(By.XPATH, self.msTitle).click()
-        # select_ms = self.driver.find_element(By.XPATH, self.msTitle)
-        # self.driver.execute_script("arguments[0].click();", select_ms)
 
     def input_given_name(self, given_name):
         self.driver.find_element(By.NAME, self.givenNameField).click()
@@ -119,7 +114,8 @@ class OneWayFlight:
         self.driver.find_element(By.XPATH, self.radioButtonRedeemTc).click()
         actions = ActionChains(self.driver)
         ele1 = self.driver.find_element(By.XPATH, self.slider)
-        actions.drag_and_drop_by_offset(ele1, 20, 0).perform()
+        # actions.drag_and_drop_by_offset(ele1, 20, 0).perform()
+        actions.click_and_hold(ele1).move_by_offset(20, 0).perform()
 
     # def enter_coupon(self, coupon_code):
     #     self.driver.find_element(By.XPATH, self.radioButtonCouponCode).click()

@@ -40,7 +40,6 @@ class TestOneWayFlightBooking(unittest.TestCase):
         time.sleep(4)
         oneway_flight.switch_window()
         print(driver.title)
-        time.sleep(4)
         oneway_flight.click_title()
         oneway_flight.input_given_name(''.join(random.choices(string.ascii_letters, k=10)))
         oneway_flight.input_sur_name(''.join(random.choices(string.ascii_letters, k=8)))

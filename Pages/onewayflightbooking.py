@@ -81,24 +81,23 @@ class OneWayFlight:
     def switch_window(self):
         driver = self.driver
         p = driver.current_window_handle
-        chwd = driver.window_handles
         print(driver.current_window_handle)
         chwd = driver.window_handles
         for w in chwd:
             # switch focus to child window
-            if (w != p):
+            if w != p:
                 driver.switch_to.window(w)
             break
         print(driver.window_handles)
-
 
         """another way"""
         # current_window = driver.window_handles[1]
         # driver.switch_to.window(driver.window_handles[1])
 
     def click_title(self):
-        title_field = self.driver.find_element(By.XPATH, self.title)
-        self.driver.execute_script("arguments[0].click();", title_field)
+        # title_field = self.driver.find_element(By.XPATH, self.title)
+        # self.driver.execute_script("arguments[0].click();", title_field)
+        self.driver.find_element(By.XPATH, self.title).click()
         self.driver.find_element(By.XPATH, self.msTitle).click()
         # select_ms = self.driver.find_element(By.XPATH, self.msTitle)
         # self.driver.execute_script("arguments[0].click();", select_ms)

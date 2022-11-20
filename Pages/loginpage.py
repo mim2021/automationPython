@@ -35,5 +35,6 @@ class Login:
     def click_login_button(self):
         login_button = self.driver.find_element(By.XPATH, self.login_button_xpath)
         login_button.click()
+        # self.driver.execute_script("arguments[0].click();", login_button)
 
 

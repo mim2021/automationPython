@@ -48,6 +48,32 @@ class DateForFlights:
             return False
         return True
 
+    def select_return_date(self, month_year, date):
+        is_month_found = False
+        self.get_element(self.dateInput).click()
+
+        while not is_month_found:
+            month_year_locator = (By.XPATH, f'//div[contains(@class, "CalendarMonth_caption")]//strong[text()="{month_year}"]')
+
+            if self.is_element_visible(month_year_locator, 3):
+                is_month_found = True
+                date_locator = (By.XPATH, f'//strong[text()="{month_year}"]/parent::div//following-sibling::table//td')
+
+                for index in range(len(self.get_elements(date_locator))):
+                    target_date_element = self.get_elements(date_locator)[index]
+                    target_date_text = int(target_date_element.text.strip())
+                    if target_date_text == date:
+                        self.scroll_to_element(self.multiTab)
+                        target_date_element.click()
+                        break
+            else:
+                self.get_element(self.rightArrowSignOneWay).click()
+        print('Selected date:', self.get_element(self.dateInput).get_attribute("value"))
+
+
     def scroll_to_element(self, locator):
         element = self.get_element(locator)
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
+
+
+

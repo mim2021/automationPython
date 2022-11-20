@@ -20,6 +20,7 @@ class TestOneWayFlightBooking(unittest.TestCase):
         login_oneway_flight_booking.enter_password_login("Vugijugi78")
         login_oneway_flight_booking.click_login_button()
 
+
         oneway_flight = OneWayFlight(driver)
         oneway_flight.click_oneway_tab()
         oneway_flight.input_flying_from_oneway("bkk")

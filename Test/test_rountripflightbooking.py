@@ -35,7 +35,7 @@ class TestRoundTripFlightBooking(unittest.TestCase):
         time.sleep(4)
         login_roundtrip_flight_booking.click_book_button()
         login_roundtrip_flight_booking.switch_window()
-        login_roundtrip_flight_booking.input_given_name(''.join(random.choices(string.ascii_letters, k=10)))
+        login_roundtrip_flight_booking.input_given_name(''.join(random.choices(string.ascii_letters, k=8)))
         login_roundtrip_flight_booking.input_sur_name(''.join(random.choices(string.ascii_letters, k=8)))
         login_roundtrip_flight_booking.click_radio_button_earn_tc()
         driver.execute_script("window.scrollTo(0,600)")
@@ -52,9 +52,5 @@ class TestRoundTripFlightBooking(unittest.TestCase):
         random_passport_number = f"{get_random_passport_number(2)}{random.randrange(1000000)}"
         login_roundtrip_flight_booking.input_passport_number(random_passport_number)
         login_roundtrip_flight_booking.give_passport_expiry_date()
-
-
-
-
 
         print("Test Case Running Successfully")

@@ -18,7 +18,7 @@ class OneWayFlight:
         self.economyClass = "//button[normalize-space()='Economy Class']"
         self.searchButton = "//button[normalize-space()='Search Flights']"
         self.bookButton = "//body/div[@id='__next']/div[1]/section[2]/div[1]/div[1]/div[2]/div[4]/div[1]/div[1]/div[2]/div[3]/a[1]/button[1]"
-        self.title = ":r13:"
+        self.title = "//body/div[@id='__next']/div[1]/section[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/form[1]/section[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/*[1]"
         self.msTitle = "//li[normalize-space()='Ms']"
         self.givenNameField = "givenName"
         self.surNameField = "//input[@name='surName']"
@@ -97,8 +97,7 @@ class OneWayFlight:
         # driver.switch_to.window(current_window)
 
     def click_title(self):
-        self.driver.implicit_wait(10)
-        self.driver.find_element(By.ID, self.title).click()
+        self.driver.find_element(By.XPATH, self.title).click()
         self.driver.find_element(By.XPATH, self.msTitle).click()
 
     def input_given_name(self, given_name):

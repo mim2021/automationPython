@@ -7,7 +7,7 @@ class Login:
     def __init__(self, driver):
         self.driver = driver
         self.profile_icon = "//div[@class='image flex-img d-flex align-items-center justify-content-center']"
-        self.login_text = "//li[normalize-space()='Log In']"
+        self.login_text = "//body/div[@id='account-menu']/div[3]/ul[1]/li[1]"
         self.email_box_login = "email"
         self.password_box_login = "password"
         self.eye_icon_login = "//button[@class='MuiButtonBase-root MuiIconButton-root']"

@@ -1,4 +1,6 @@
 import time
+
+from selenium.common import TimeoutException
 from selenium.webdriver import ActionChains, Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
@@ -15,8 +17,8 @@ class OneWayFlight:
         self.flyingToOneWay = "//div[@class='icon-input-block search-group circle-left']//div[@class='text-field']//div//input[@id='autocompleteundefined']"
         self.economyClass = "//button[normalize-space()='Economy Class']"
         self.searchButton = "//button[normalize-space()='Search Flights']"
-        self.bookButton = "//div[@class='row']//div[1]//div[1]//div[2]//div[3]//a[1]//button[1]"
-        self.title = ":re:"
+        self.bookButton = "//body/div[@id='__next']/div[1]/section[2]/div[1]/div[1]/div[2]/div[4]/div[1]/div[1]/div[2]/div[3]/a[1]/button[1]"
+        self.title = ":r13:"
         self.msTitle = "//li[normalize-space()='Ms']"
         self.givenNameField = "givenName"
         self.surNameField = "//input[@name='surName']"
@@ -75,7 +77,8 @@ class OneWayFlight:
 
     def click_book_button(self):
         book_button = self.driver.find_element(By.XPATH, self.bookButton)
-        self.driver.execute_script("arguments[0].click();", book_button)
+        book_button.click()
+        # self.driver.execute_script("arguments[0].click();", book_button)
 
     def switch_window(self):
         driver = self.driver
@@ -91,9 +94,10 @@ class OneWayFlight:
 
         """another way"""
         # current_window = driver.window_handles[1]
-        # driver.switch_to.window(driver.window_handles[1])
+        # driver.switch_to.window(current_window)
 
     def click_title(self):
+        self.driver.implicit_wait(10)
         self.driver.find_element(By.ID, self.title).click()
         self.driver.find_element(By.XPATH, self.msTitle).click()
 

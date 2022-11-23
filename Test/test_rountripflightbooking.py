@@ -31,7 +31,7 @@ class TestRoundTripFlightBooking(unittest.TestCase):
         login_roundtrip_flight_booking = OneWayFlight(driver)
         # login_roundtrip_flight_booking.click_economy()
         login_roundtrip_flight_booking.click_search_button()
-        # login_roundtrip_flight_booking.click_cross_button()
+        login_roundtrip_flight_booking.click_cross_button()
         time.sleep(4)
         login_roundtrip_flight_booking.click_book_button()
         login_roundtrip_flight_booking.switch_window()
@@ -58,7 +58,7 @@ class TestRoundTripFlightBooking(unittest.TestCase):
         login_roundtrip_flight_booking.click_quick_pick_checkbox()
         driver.execute_script("window.scrollTo(0, 1000)")
         login_roundtrip_flight_booking.click_tc_checkbox()
-        login_roundtrip_flight_booking.click_paynow_button()
+        # login_roundtrip_flight_booking.click_paynow_button()
         time.sleep(4)
 
         print("Test Case Running Successfully")

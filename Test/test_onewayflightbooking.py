@@ -63,7 +63,7 @@ class TestOneWayFlightBooking(unittest.TestCase):
         driver.execute_script("window.scrollTo(0, 1000)")
         oneway_flight.click_tc_checkbox()
         # driver.execute_script("window.scrollTo(0, 200)")
-        oneway_flight.click_paynow_button()
+        # oneway_flight.click_paynow_button()
         time.sleep(4)
         print("Test Case Run Successfully")
 

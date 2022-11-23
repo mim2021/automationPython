@@ -18,8 +18,8 @@ class OneWayFlight:
         self.economyClass = "//button[normalize-space()='Economy Class']"
         self.searchButton = "//button[normalize-space()='Search Flights']"
         self.bookButton = "//body/div[@id='__next']/div[1]/section[2]/div[1]/div[1]/div[2]/div[4]/div[1]/div[1]/div[2]/div[3]/a[1]/button[1]"
-        self.title = "//body/div[@id='__next']/div[1]/section[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/form[1]/section[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/*[1]"
-        self.msTitle = "//li[normalize-space()='Ms']"
+        self.title = "//body/div[@id='__next']/div[1]/section[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/form[1]/section[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]"
+        self.msTitle = "//body/div[@id='menu-titleName']/div[3]/ul[1]/li[2]"
         self.givenNameField = "givenName"
         self.surNameField = "//input[@name='surName']"
         self.crossButton = "//span[@class='cc-57dy cc-c2rb']"
@@ -38,11 +38,11 @@ class OneWayFlight:
         self.bank = "//label[@for='inlineRadio1']"
         self.quickPickCheckBox = "//input[@name='quickPick']"
         self.tcCheckBox = "//input[@name='checkedB']"
-        self.paynowButton = "//span[normalize-space()='Pay now']"
         self.passportExpiryDateField = "//*[@id='__next']/div/section/div/div/div[1]/div[2]/div/div/form/section/div[1]/div[4]/div[7]/div/div/div/div[1]/div/div/div/input"
         self.passportExpiryMonth = "//select[@class='react-datepicker__month-select']"
         self.passportExpiryYear = "//select[@class='react-datepicker__year-select']"
         self.passportExpiryDate = "//div[@aria-label='Choose Wednesday, June 19th, 2024']"
+        self.paynowButton = "//button[normalize-space()='Pay now']"
 
     def click_oneway_tab(self):
         self.driver.find_element(By.XPATH, self.onewayTab).click()

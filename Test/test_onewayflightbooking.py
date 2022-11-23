@@ -20,7 +20,6 @@ class TestOneWayFlightBooking(unittest.TestCase):
         login_oneway_flight_booking.enter_password_login("Vugijugi78")
         login_oneway_flight_booking.click_login_button()
 
-
         oneway_flight = OneWayFlight(driver)
         oneway_flight.click_oneway_tab()
         oneway_flight.input_flying_from_oneway("bkk")
@@ -36,9 +35,9 @@ class TestOneWayFlightBooking(unittest.TestCase):
         oneway_flight.click_book_button()
         oneway_flight.switch_window()
         print(driver.title)
-        # time.sleep(4)
+        time.sleep(2)
         oneway_flight.click_title()
-        # time.sleep(2)
+        time.sleep(2)
         oneway_flight.input_given_name(''.join(random.choices(string.ascii_letters, k=10)))
         oneway_flight.input_sur_name(''.join(random.choices(string.ascii_letters, k=8)))
         oneway_flight.click_radio_button_earn_tc()
@@ -61,9 +60,10 @@ class TestOneWayFlightBooking(unittest.TestCase):
         oneway_flight.select_bank()
         driver.execute_script("window.scrollTo(0, 600)")
         oneway_flight.click_quick_pick_checkbox()
-        driver.execute_script("window.scrollTo(0, 800)")
+        driver.execute_script("window.scrollTo(0, 1000)")
         oneway_flight.click_tc_checkbox()
-        # oneway_flight.click_paynow_button()
+        # driver.execute_script("window.scrollTo(0, 200)")
+        oneway_flight.click_paynow_button()
         time.sleep(4)
         print("Test Case Run Successfully")
 

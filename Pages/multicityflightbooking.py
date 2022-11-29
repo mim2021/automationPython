@@ -37,7 +37,7 @@ class MultiCityFlight:
         time.sleep(2)
         action.send_keys(Keys.ENTER).perform()
 
-    def input_city_flying_from2(self, flying_from_country2):
+    def input_multi_city_flying_from2(self, flying_from_country2):
         self.driver.find_element(By.XPATH, self.flyingFromMultiCity2).click()
         self.driver.find_element(By.XPATH, self.flyingFromMultiCity2).send_keys(flying_from_country2)
         driver = self.driver
@@ -45,7 +45,7 @@ class MultiCityFlight:
         action.send_keys(Keys.ARROW_DOWN).perform()
         action.send_keys(Keys.ENTER).perform()
 
-    def input_city_flying_to2(self, flying_to_country2):
+    def input_multi_city_flying_to2(self, flying_to_country2):
         self.driver.find_element(By.XPATH, self.flyingFromMultiCity3).click()
         self.driver.find_element(By.XPATH, self.flyingToMultiCity3).send_keys(flying_to_country2)
         driver = self.driver
@@ -53,7 +53,7 @@ class MultiCityFlight:
         action.send_keys(Keys.ARROW_DOWN).perform()
         action.send_keys(Keys.ENTER).perform()
 
-    def input_city_flying_from3(self, flying_from_country3):
+    def input_multi_city_flying_from3(self, flying_from_country3):
         self.driver.find_element(By.XPATH, self.flyingToMultiCity3).click()
         self.driver.find_element(By.XPATH, self.flyingToMultiCity3).send_keys(flying_from_country3)
         driver = self.driver

@@ -20,14 +20,14 @@ class TestMultiCityFlightBooking(unittest.TestCase):
 
         multicity_flight = MultiCityFlight(driver)
         multicity_flight.click_multi_city_tab()
-        multicity_flight.input_city_flying_from1("dac")
-        multicity_flight.input_city_flying_to1("bkk")
+        multicity_flight.input_multi_city_flying_from1("dac")
+        multicity_flight.input_multi_city_flying_to1("bkk")
         time.sleep(4)
-        multicity_flight.flyingFromMultiCity2("bkk")
-        multicity_flight.flyingToMultiCity2("sin")
+        multicity_flight.input_multi_city_flying_from2("bkk")
+        multicity_flight.input_multi_city_flying_to1("sin")
         time.sleep(4)
-        multicity_flight.flyingFromMultiCity3("sin")
-        multicity_flight.flyingToMultiCity3("dac")
+        multicity_flight.input_multi_city_flying_from3("sin")
+        multicity_flight.input_multi_city_flying_to1("dac")
         time.sleep(4)
 
 

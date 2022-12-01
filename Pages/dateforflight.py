@@ -70,10 +70,10 @@ class DateForFlights:
                 self.get_element(self.rightArrowSignOneWay).click()
         print('Selected date:', self.get_element(self.dateInput).get_attribute("value"))
 
-
     def scroll_to_element(self, locator):
         element = self.get_element(locator)
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
+
 
 
 

@@ -10,6 +10,8 @@ class DateForFlights:
 
     multiTab = (By.XPATH, "(//div[@role='tablist'])[2]")
     dateInput = (By.ID, "date_input")
+    dateInput1 = (By.XPATH, "//body/div[@id='__next']/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[3]/div[1]/form[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+    dateInput2 = (By.XPATH, "//body/div[@id='__next']/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[3]/div[1]/form[1]/div[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
     rightArrowSignOneWay = (By.XPATH, "(//button[@class='MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge mdi mdi-chevron-right mui-style-1w8s6so'])[1]")
 
     def select_target_date(self, month_year, date):
@@ -34,23 +36,32 @@ class DateForFlights:
                 self.get_element(self.rightArrowSignOneWay).click()
         print('Selected date:', self.get_element(self.dateInput).get_attribute("value"))
 
-    def get_element(self, by_locator):
-        return self.driver.find_element(*by_locator)
-
-    def get_elements(self, by_locator):
-        return self.driver.find_elements(*by_locator)
-
-    def is_element_visible(self, locator, wait_time=10):
-        try:
-            wait = WebDriverWait(self.driver, wait_time)
-            wait.until(expected_conditions.visibility_of_element_located(locator))
-        except TimeoutException:
-            return False
-        return True
-
     def select_return_date(self, month_year, date):
         is_month_found = False
         self.get_element(self.dateInput).click()
+
+        while not is_month_found:
+            month_year_locator = (
+            By.XPATH, f'//div[contains(@class, "CalendarMonth_caption")]//strong[text()="{month_year}"]')
+
+            if self.is_element_visible(month_year_locator, 3):
+                is_month_found = True
+                date_locator = (By.XPATH, f'//strong[text()="{month_year}"]/parent::div//following-sibling::table//td')
+
+                for index in range(len(self.get_elements(date_locator))):
+                    target_date_element = self.get_elements(date_locator)[index]
+                    target_date_text = int(target_date_element.text.strip())
+                    if target_date_text == date:
+                        self.scroll_to_element(self.multiTab)
+                        target_date_element.click()
+                        break
+            else:
+                self.get_element(self.rightArrowSignOneWay).click()
+        print('Selected date:', self.get_element(self.dateInput).get_attribute("value"))
+
+    def select_target_date2(self, month_year, date):
+        is_month_found = False
+        self.get_element(self.dateInput1).click()
 
         while not is_month_found:
             month_year_locator = (By.XPATH, f'//div[contains(@class, "CalendarMonth_caption")]//strong[text()="{month_year}"]')
@@ -68,7 +79,43 @@ class DateForFlights:
                         break
             else:
                 self.get_element(self.rightArrowSignOneWay).click()
-        print('Selected date:', self.get_element(self.dateInput).get_attribute("value"))
+        print('Selected date:', self.get_element(self.dateInput1).get_attribute("value"))
+
+    def select_target_date3(self, month_year, date):
+        is_month_found = False
+        self.get_element(self.dateInput2).click()
+
+        while not is_month_found:
+            month_year_locator = (By.XPATH, f'//div[contains(@class, "CalendarMonth_caption")]//strong[text()="{month_year}"]')
+
+            if self.is_element_visible(month_year_locator, 3):
+                is_month_found = True
+                date_locator = (By.XPATH, f'//strong[text()="{month_year}"]/parent::div//following-sibling::table//td')
+
+                for index in range(len(self.get_elements(date_locator))):
+                    target_date_element = self.get_elements(date_locator)[index]
+                    target_date_text = int(target_date_element.text.strip())
+                    if target_date_text == date:
+                        self.scroll_to_element(self.multiTab)
+                        target_date_element.click()
+                        break
+            else:
+                self.get_element(self.rightArrowSignOneWay).click()
+        print('Selected date:', self.get_element(self.dateInput2).get_attribute("value"))
+
+    def get_element(self, by_locator):
+        return self.driver.find_element(*by_locator)
+
+    def get_elements(self, by_locator):
+        return self.driver.find_elements(*by_locator)
+
+    def is_element_visible(self, locator, wait_time=10):
+        try:
+            wait = WebDriverWait(self.driver, wait_time)
+            wait.until(expected_conditions.visibility_of_element_located(locator))
+        except TimeoutException:
+            return False
+        return True
 
     def scroll_to_element(self, locator):
         element = self.get_element(locator)

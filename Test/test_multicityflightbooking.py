@@ -49,7 +49,7 @@ class TestMultiCityFlightBooking(unittest.TestCase):
         time.sleep(2)
 
         multi_city_flight_details = OneWayFlight(driver)
-        # multi_city_flight_details.click_cross_button()
+        multi_city_flight_details.click_cross_button()
         multi_city_flight_details.click_book_button()
         multi_city_flight_details.switch_window()
         print(driver.title)

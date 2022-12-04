@@ -23,9 +23,9 @@ class TestMultiCityFlightBooking(unittest.TestCase):
         multi_city_flight.input_multi_city_flying_from1("dac")
         multi_city_flight.input_multi_city_flying_to1("bkk")
 
-        multi_city_flight_date1 = DateForFlights(driver)
-        multi_city_flight_date1.select_target_date()
-        time.sleep(2)
+        # multi_city_flight_date1 = DateForFlights(driver)
+        # multi_city_flight_date1.select_target_date()
+        # time.sleep(2)
 
         multi_city_flight.input_multi_city_flying_from2("bkk")
         multi_city_flight.input_multi_city_flying_to2("sin")

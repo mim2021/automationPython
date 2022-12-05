@@ -56,9 +56,10 @@ class TestRoundTripFlightBooking(unittest.TestCase):
         login_roundtrip_flight_booking.select_bank()
         driver.execute_script("window.scrollTo(0, 600)")
         login_roundtrip_flight_booking.click_quick_pick_checkbox()
-        driver.execute_script("window.scrollTo(0, 1000)")
+        driver.execute_script("window.scrollTo(0, 600)")
         login_roundtrip_flight_booking.click_tc_checkbox()
-        # login_roundtrip_flight_booking.click_paynow_button()
+        # driver.execute_script("window.scrollTo(0, 200")
+        login_roundtrip_flight_booking.click_paynow_button()
         time.sleep(4)
 
         print("Test Case Running Successfully")

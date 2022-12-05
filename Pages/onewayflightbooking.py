@@ -77,6 +77,10 @@ class OneWayFlight:
 
     def switch_window(self):
         driver = self.driver
+        current_window = driver.window_handles[1]
+        driver.switch_to.window(current_window)
+
+        """another way"""
         # p = driver.current_window_handle
         # print(driver.current_window_handle)
         # chwd = driver.window_handles
@@ -86,10 +90,6 @@ class OneWayFlight:
         #         driver.switch_to.window(w)
         #     break
         # print(driver.window_handles)
-
-        """another way"""
-        current_window = driver.window_handles[1]
-        driver.switch_to.window(current_window)
 
     def click_title(self):
         self.driver.find_element(By.XPATH, self.title).click()

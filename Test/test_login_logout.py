@@ -18,7 +18,7 @@ class TestLoginLogout(unittest.TestCase):
         login.click_profile_icon_login()
         login.click_login()
         login.enter_email_login("mim@sharetrip.net")
-        login.enter_password_login("vugijugi")
+        login.enter_password_login("vugijugi7")
         login.click_login_button()
 
         logout = Login(driver)

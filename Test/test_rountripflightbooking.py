@@ -17,7 +17,7 @@ class TestRoundTripFlightBooking(unittest.TestCase):
         login_roundtrip_flight_booking.click_profile_icon_login()
         login_roundtrip_flight_booking.click_login()
         login_roundtrip_flight_booking.enter_email_login("mim@sharetrip.net")
-        login_roundtrip_flight_booking.enter_password_login("Vugijugi78")
+        login_roundtrip_flight_booking.enter_password_login("Vugijugi7")
         login_roundtrip_flight_booking.click_login_button()
 
         login_roundtrip_flight_booking = RoundTripFlight(driver)

@@ -26,6 +26,10 @@ class TestHotelBooking(unittest.TestCase):
         date_hotel_booking = DateForHotels(driver)
         date_hotel_booking.select_target_date("January 2023", 28)
         date_hotel_booking.select_return_date("February 2023", 3)
+        time.sleep(2)
+
+        hotel_booking = HotelBooking(driver)
+        hotel_booking.click_enter_city()
         time.sleep(4)
 
         print("Test is running successfully")

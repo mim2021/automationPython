@@ -2,6 +2,9 @@ import time
 
 from selenium.webdriver import ActionChains, Keys
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import wait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 class HotelBooking:
@@ -11,6 +14,7 @@ class HotelBooking:
         self.enterCity = "//input[@id='hotelAutocomplete']"
         self.checkInDate = "//input[@id='startDateId']"
         self.checkOutDate = "//input[@id='endDateId']"
+        self.guestAndRoomField = "//div[@class='ServicePassengersSelect HotelTouristSelect']"
 
     def click_hotel_tab(self):
         ele1 = self.driver.find_element(By.XPATH, self.hotelTab)
@@ -24,6 +28,17 @@ class HotelBooking:
         action.send_keys(Keys.ARROW_DOWN).perform()
         time.sleep(2)
         action.send_keys(Keys.ENTER).perform()
+
+    def click_enter_city(self):
+        ele = self.driver.find_element(By.XPATH, self.enterCity).click()
+        wait = WebDriverWait(self.driver, 20)
+        wait.until(EC.visibility_of_element_located(ele))
+        ele.click()
+        print(ele.get_attribute('class'))
+
+
+
+
 
 
 

@@ -10,6 +10,7 @@ class DateForHotels:
 
     multiTab = (By.XPATH, "(//div[@role='tablist'])[2]")
     dateInput = (By.ID, "startDateId")
+    dateInput1 = (By.ID, "endDateId")
     rightArrowSignOneWay = (By.XPATH, "(//button[@class='MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge mdi mdi-chevron-right mui-style-1w8s6so'])[1]")
 
     def select_target_date(self, month_year, date):
@@ -36,7 +37,7 @@ class DateForHotels:
 
     def select_return_date(self, month_year, date):
         is_month_found = False
-        self.get_element(self.dateInput).click()
+        self.get_element(self.dateInput1).click()
 
         while not is_month_found:
             month_year_locator = (By.XPATH, f'//div[contains(@class, "CalendarMonth_caption")]//strong[text()="{month_year}"]')

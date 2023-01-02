@@ -30,6 +30,7 @@ class TestHotelBooking(unittest.TestCase):
 
         hotel_booking = HotelBooking(driver)
         hotel_booking.click_enter_city()
+        hotel_booking.search_button()
         time.sleep(4)
 
         print("Test is running successfully")
